@@ -1,0 +1,19 @@
+name: Dockerimage
+
+on:
+ workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and push Docker image
+      run: | 
+        echo "${{ secrets.DOCKER_PW }}" |  docker login -u "sivavarmaboddu" --password-stdin 
+        #docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        docker image build -t sivavarmaboddu/hello-app:latest .
+        docker push sivavarmaboddu/hello-app:latest
