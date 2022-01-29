@@ -16,4 +16,4 @@ jobs:
       run: | 
         echo "${{ secrets.DOCKER_PW }}" |  docker login -u "sivavarmaboddu" --password-stdin 
         docker image build -t sivavarmaboddu/hello-app:latest ./hello-app
-        #docker push sivavarmaboddu/hello-app:latest
+        docker push sivavarmaboddu/hello-app:latest
